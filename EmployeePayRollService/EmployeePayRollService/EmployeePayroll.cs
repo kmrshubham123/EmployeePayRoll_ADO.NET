@@ -6,6 +6,9 @@ namespace EmployeePayRollService
 {
     class EmployeePayroll
     {
+        /// <summary>
+        /// used for Retriveving and storing
+        /// </summary>
         public int EmployeeID { get; set; }
         public string EmployeeName { get; set; }
         public double Salary { get; set; }

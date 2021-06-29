@@ -18,7 +18,7 @@ namespace EmployeePayRollService
         /// </summary>
         public void GetAllEmployee()
         {
-            try
+            try //When an exception occurs, the control will move to the catch block
             {
                 EmployeePayroll payroll = new EmployeePayroll();
                 using (this.sqlConnection)
@@ -46,22 +46,26 @@ namespace EmployeePayRollService
                             payroll.TaxablePay = dr.GetDouble(10);
                             payroll.IncomeTax = dr.GetDouble(11);
                             payroll.NetPay = dr.GetDouble(12);
-                            System.Console.WriteLine(payroll.EmployeeID + " " + payroll.EmployeeName + " " + payroll.Salary + " " + payroll.StartDate + " " + payroll.Gender + " " + payroll.PhoneNumber + " " + payroll.Department + " " + payroll.Address + " " + payroll.BasicPay + " " + payroll.Deduction + " " + payroll.TaxablePay + " " + payroll.IncomeTax + " " + payroll.NetPay);
+                            Console.WriteLine(payroll.EmployeeID + " " + payroll.EmployeeName + " " + payroll.Salary + " " + payroll.StartDate + " " + payroll.Gender + " " + payroll.PhoneNumber + " " + payroll.Department + " " + payroll.Address + " " + payroll.BasicPay + " " + payroll.Deduction + " " + payroll.TaxablePay + " " + payroll.IncomeTax + " " + payroll.NetPay);
 
                         }
                     }
                     else
                     {
-                        System.Console.WriteLine("No data found");
+                        Console.WriteLine("No data found");
                     }
                     //close data reader
                     dr.Close();
                     this.sqlConnection.Close();
                 }
             }
-            catch (Exception e)
+            catch (Exception e) //Catch/Handle the exception  
             {
-                System.Console.WriteLine(e.Message);
+                Console.WriteLine(e.Message);
+            }
+            finally //this block of code will always get executed whether an exception occurs or not.
+            {
+                this.sqlConnection.Close();
             }
         }
     }
