@@ -9,8 +9,6 @@ namespace EmployeePayRollService
             Console.WriteLine("****Welcome to Employee PayRoll****");
             EmployeeRepo employeeRepo = new EmployeeRepo();
             employeeRepo.GetAllEmployee();
-
-            
         }
     }
 }
